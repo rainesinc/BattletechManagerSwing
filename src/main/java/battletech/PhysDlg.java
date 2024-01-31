@@ -5,6 +5,9 @@
  */
 package battletech;
 
+import com.rainesinc.NetbeansResourceMapReader;
+
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -101,7 +104,13 @@ public class PhysDlg extends javax.swing.JDialog {
             }
         });
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(BattletechApp.class).getContext().getResourceMap(PhysDlg.class);
+        NetbeansResourceMapReader resourceMap = null;
+        try {
+            resourceMap = new NetbeansResourceMapReader("PhysDlg.properties");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         okButton.setText(resourceMap.getString("okButton.text")); // NOI18N
         okButton.setName("okButton"); // NOI18N
         okButton.addActionListener(new java.awt.event.ActionListener() {

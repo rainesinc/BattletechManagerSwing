@@ -5,12 +5,15 @@
  */
 package battletech;
 
+import com.rainesinc.NetbeansResourceMapReader;
+
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.image.ColorModel;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -696,7 +699,13 @@ public class MechPanel extends javax.swing.JPanel {
 
         jPanel6.setName("jPanel6"); // NOI18N
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(BattletechApp.class).getContext().getResourceMap(MechPanel.class);
+        NetbeansResourceMapReader resourceMap = null;
+        try {
+            resourceMap = new NetbeansResourceMapReader("MechPanel.properties");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
         jLabel2.setName("jLabel2"); // NOI18N
 

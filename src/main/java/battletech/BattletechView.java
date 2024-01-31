@@ -252,7 +252,7 @@ public class BattletechView extends FrameView {
         lanceDlg = null;
     }
 
-    private void newMechPanel(String lance, String mech, String tons) {
+    private void newMechPanel(String lance, String mech, String tons) throws IOException {
         MechInternalFrame mif = new MechInternalFrame(lance, mech, tons);
         jDesktopPane1.add(mif);
         // Decide on location to place the new panel based on the last one
@@ -267,7 +267,7 @@ public class BattletechView extends FrameView {
     }
 
     @Action
-    public void newMechPanel() {
+    public void newMechPanel() throws IOException {
         MechInternalFrame mif = new MechInternalFrame();
         jDesktopPane1.add(mif);
         // Decide on location to place the new panel based on the last one

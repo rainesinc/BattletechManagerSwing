@@ -5,6 +5,9 @@
  */
 package battletech;
 
+import com.rainesinc.NetbeansResourceMapReader;
+
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -109,7 +112,13 @@ public class ShotDlg extends javax.swing.JDialog {
         jScrollPane2 = new javax.swing.JScrollPane();
         shotsList = new javax.swing.JList();
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(BattletechApp.class).getContext().getResourceMap(ShotDlg.class);
+        NetbeansResourceMapReader resourceMap = null;
+        try {
+            resourceMap = new NetbeansResourceMapReader("ShotDlg.properties");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
         jLabel1.setName("jLabel1"); // NOI18N
 
